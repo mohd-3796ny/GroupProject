@@ -1,18 +1,14 @@
-package signuppagetest;
+package signinpagetest;
 
 
 import base.CommonAPI;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import base.CommonAPI;
+
 import utility.DataReaderForSignup;
 
-
-
-import java.io.IOException;
-
-public class Signuptest extends CommonAPI {
+public class SignInTest extends CommonAPI {
     public DataReaderForSignup dr = new DataReaderForSignup();
     String path = "/Users/mdhasan/Desktop/GroupProject/Amazon/src/main/resources/testdata.xls";
 
@@ -22,8 +18,6 @@ public class Signuptest extends CommonAPI {
         try {
             String[][] value = dr.fileReader(path);
             sleepFor(2);
-//            clickByCss("#nav-tools #nav-link-yourAccount .nav-line-1");
-//            clickByCss(".nav-action-inner");
 
             clickByXpath("#ap_email");
             clickByXpath(".#ap_password");
@@ -40,9 +34,9 @@ public class Signuptest extends CommonAPI {
             result = true;
         }
         if(result==true) {
-            dr.writeBack("pass");
+            dr.writeBack("SignIn Test : Pass");
         }else{
-            dr.writeBack("fail");
+            dr.writeBack("SignIn Test : Fail");
         }
 
     }

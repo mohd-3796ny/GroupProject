@@ -19,7 +19,7 @@
         <class name="homePageTest.HomePageTest"/>
         <class name="searchTest.TestSearch"/>
         <class name="dropDownMenu.TestDropDown"/>
-        <class name="signuppagetest.Signuptest"/>
+        <class name="signinpagetest.SignInTest"/>
 
 
     </classes>
