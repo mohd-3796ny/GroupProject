@@ -19,6 +19,8 @@
         <class name="homePageTest.HomePageTest"/>
         <class name="searchTest.TestSearch"/>
         <class name="dropDownMenu.TestDropDown"/>
+        <class name="signuppagetest.Signuptest"/>
+
 
     </classes>
 
