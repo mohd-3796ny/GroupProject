@@ -20,6 +20,8 @@
         <class name="searchTest.TestSearch"/>
         <class name="dropDownMenu.TestDropDown"/>
         <class name="signinpagetest.SignInTest"/>
+        <class name="searchTest.TagNamePageTest"/>
+        <class name="randomTests.RandomTests"/>
 
 
     </classes>
