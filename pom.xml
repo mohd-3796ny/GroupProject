@@ -11,6 +11,7 @@
     <modules>
         <module>Generic</module>
         <module>Ebay</module>
+        <module>Amazon</module>
 
     </modules>
 
@@ -32,7 +33,7 @@
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>6.0.6</version>
+                <version>8.0.13</version>
             </dependency>
             <dependency>
                 <groupId>org.mongodb</groupId>

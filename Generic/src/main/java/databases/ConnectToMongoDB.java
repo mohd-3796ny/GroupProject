@@ -1,11 +1,16 @@
 package databases;
 
+import ch.qos.logback.classic.Logger;
 import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+
+import ch.qos.logback.classic.Level;
+import ch.qos.logback.classic.LoggerContext;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,14 +21,27 @@ public class ConnectToMongoDB {
     public static MongoDatabase mongoDatabase = null;
 
     public static MongoDatabase connectToMongoDB() {
+
+        LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
+        Logger rootLogger = loggerContext.getLogger("org.mongodb.driver");
+        rootLogger.setLevel(Level.OFF);
+
+
         MongoClient mongoClient = new MongoClient();
         mongoDatabase = mongoClient.getDatabase("students");
         System.out.println("Database Connected");
 
         return mongoDatabase;
+
+
     }
 
+
+
     public static String insertIntoToMongoDB(User user) {
+
+        System.setProperty("DEBUG.MONGO", "false");
+
         String profile = user.getStName();
         MongoDatabase mongoDatabase = connectToMongoDB();
         MongoCollection<Document> collection = mongoDatabase.getCollection("profile");
@@ -34,7 +52,9 @@ public class ConnectToMongoDB {
     }
 
 
-    public static List<User> readUserProfileFromMongoDB() {
+    public static List<User> readUserProfileFromMongoDB()
+    {
+
         List<User> list = new ArrayList<User>();
         User user = new User();
         MongoDatabase mongoDatabase = connectToMongoDB();
@@ -55,10 +75,11 @@ public class ConnectToMongoDB {
     }
 
     public static void main(String[] args) {
-        insertIntoToMongoDB(new User("--", "4493", "07-1996"));
+        insertIntoToMongoDB(new User("Md Hasan", "0001", "01-07-1996"));
         List<User> user = readUserProfileFromMongoDB();
         for (User person : user) {
             System.out.println(person.getStName() + " " + person.getStID());
+
         }
     }
 
@@ -71,5 +92,7 @@ public class ConnectToMongoDB {
         FindIterable<Document> iterable = collection.find(basicDBObject);
 
         return list;
+
+
     }
 }
