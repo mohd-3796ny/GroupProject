@@ -11,7 +11,7 @@
     <parameter name="browserVersion" value="53.0"/>
     <parameter name="url" value="https://www.amazon.com"/>
 
-    <test name="amazon Home">
+    <test name="Amazon Website">
         <classes>
             <class name="RegressionMainTest.HomepageTest"/>
 
