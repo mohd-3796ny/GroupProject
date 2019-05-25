@@ -15,59 +15,70 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-public class SearchPage{
-    @FindBy(how = How.CSS, using ="#twotabsearchtextbox")
+public class SearchPage {
+    @FindBy(how = How.CSS, using = "#twotabsearchtextbox")
     public static WebElement searchInputWebElement;
 
-    @FindBy(how = How.CSS, using =".nav-input")
+    @FindBy(how = How.CSS, using = ".nav-input")
     public static WebElement submitButtonWebElement;
 
     public WebElement getSearchInputWebElement() {
-        TestLogger.log(getClass().getSimpleName() + ": " + CommonAPI.convertToString(new Object(){}.getClass().getEnclosingMethod().getName()));
+        TestLogger.log(getClass().getSimpleName() + ": " + CommonAPI.convertToString(new Object() {
+        }.getClass().getEnclosingMethod().getName()));
         return searchInputWebElement;
     }
 
     public WebElement getSubmitButtonWebElement() {
-        TestLogger.log(getClass().getSimpleName() + ": " + CommonAPI.convertToString(new Object(){}.getClass().getEnclosingMethod().getName()));
+        TestLogger.log(getClass().getSimpleName() + ": " + CommonAPI.convertToString(new Object() {
+        }.getClass().getEnclosingMethod().getName()));
         return submitButtonWebElement;
     }
 
-    public void searchFor(String value){
-        TestLogger.log(getClass().getSimpleName() + ": " + CommonAPI.convertToString(new Object(){}.getClass().getEnclosingMethod().getName())+ " "+ value);
+    public void searchFor(String value) {
+        TestLogger.log(getClass().getSimpleName() + ": " + CommonAPI.convertToString(new Object() {
+        }.getClass().getEnclosingMethod().getName()) + " " + value);
         getSearchInputWebElement().sendKeys(value);
     }
-    public void submitSearchButton(){
-        TestLogger.log(getClass().getSimpleName() + ": " + CommonAPI.convertToString(new Object(){}.getClass().getEnclosingMethod().getName()));
+
+    public void submitSearchButton() {
+        TestLogger.log(getClass().getSimpleName() + ": " + CommonAPI.convertToString(new Object() {
+        }.getClass().getEnclosingMethod().getName()));
         getSubmitButtonWebElement().click();
     }
-    public void clearInput(){
-        TestLogger.log(getClass().getSimpleName() + ": " + CommonAPI.convertToString(new Object(){}.getClass().getEnclosingMethod().getName()));
+
+    public void clearInput() {
+        TestLogger.log(getClass().getSimpleName() + ": " + CommonAPI.convertToString(new Object() {
+        }.getClass().getEnclosingMethod().getName()));
         getSearchInputWebElement().clear();
     }
-    public void searchItemsAndSubmitButton()throws Exception, IOException, SQLException, ClassNotFoundException  {
+
+    public void searchItemsAndSubmitButton() throws Exception, IOException, SQLException, ClassNotFoundException {
         DatabaseOperation databaseOperation = new DatabaseOperation();
-        List<String> list = databaseOperation.getItemsListFromDB();
-        for(int i=0; i<list.size(); i++) {
+        List <String> list = databaseOperation.getItemsListFromDB();
+        for (int i = 0; i < list.size(); i++) {
             searchFor(list.get(i));
             submitSearchButton();
             clearInput();
         }
     }
-    public void searchItemsFromArrayListAndSubmitButton()throws Exception, IOException, SQLException, ClassNotFoundException  {
-        TestLogger.log(getClass().getSimpleName() + ": " + CommonAPI.convertToString(new Object(){}.getClass().getEnclosingMethod().getName()));
+
+    public void searchItemsFromArrayListAndSubmitButton() throws Exception, IOException, SQLException, ClassNotFoundException {
+        TestLogger.log(getClass().getSimpleName() + ": " + CommonAPI.convertToString(new Object() {
+        }.getClass().getEnclosingMethod().getName()));
         DatabaseOperation databaseOperation = new DatabaseOperation();
-        List<String> list = databaseOperation.getItemValue();
-        for(int i=0; i<list.size(); i++) {
+        List <String> list = databaseOperation.getItemValue();
+        for (int i = 0; i < list.size(); i++) {
             searchFor(list.get(i));
             submitSearchButton();
             clearInput();
         }
     }
-    public void searchItemsAndSubmitButtonFromExcelFile()throws Exception, IOException, SQLException, ClassNotFoundException  {
+
+    public void searchItemsAndSubmitButtonFromExcelFile() throws Exception, IOException, SQLException, ClassNotFoundException {
         // ToDo
         //Read data from Excel file using Apache POI
-        List<String> list = null;
-        for(int i=0; i<list.size(); i++) {
+        List <String> list = null;
+        for (int i = 0; i < list.size(); i++) {
             searchFor(list.get(i));
             submitSearchButton();
             clearInput();
@@ -82,7 +93,7 @@ public class SearchPage{
         this.searchInputWebElement = searchInputField;
     }
 
-    public void searchItems()throws InterruptedException{
+    public void searchItems() throws InterruptedException {
 //        List<String> itemList = getItemValue();
 //        for(String st: itemList) {
 //            getSearchInputField().sendKeys(st, Keys.ENTER);

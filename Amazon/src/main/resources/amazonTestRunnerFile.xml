@@ -11,22 +11,24 @@
     <parameter name="browserVersion" value="74.0"/>
     <parameter name="url" value="https://www.amazon.com/"/>
 
-<test name = "Amazon Webpage Test">
+    <test name="Amazon Webpage Test">
 
-    <classes>
+        <classes>
 
-        <class name="menuPage.MenuPageTest"/>
-        <class name="homePageTest.HomePageTest"/>
-        <class name="searchTest.TestSearch"/>
-        <class name="dropDownMenu.TestDropDown"/>
-        <class name="signinpagetest.SignInTest"/>
-        <class name="searchTest.TagNamePageTest"/>
-        <class name="randomTests.RandomTests"/>
+            <class name="menuPage.MenuPageTest"/>
+            <class name="homePageTest.HomePageTest"/>
+            <class name="searchTest.TestSearch"/>
+            <class name="dropDownMenu.TestDropDown"/>
+            <class name="signinpagetest.SignInTest"/>
+            <class name="searchTest.TagNamePageTest"/>
+            <class name="randomTests.RandomTests"/>
+            <class name="signinpagetest.SignInTest"/>
+            <class name="loginPageTest.VerifyValidLogin"/>
 
 
-    </classes>
+        </classes>
 
 
-</test>
+    </test>
 
 </suite>

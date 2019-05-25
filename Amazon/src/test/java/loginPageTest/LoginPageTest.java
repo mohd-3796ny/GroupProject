@@ -1,12 +1,10 @@
 package loginPageTest;
 
-import loginPage.LoginPage;
+import base.CommonAPI;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class LoginPageTest extends LoginPage {
+public class LoginPageTest extends CommonAPI {
 
 
     @Test
@@ -29,16 +27,5 @@ public class LoginPageTest extends LoginPage {
         driver.findElement(By.id("signInSubmit")).click();
 
     }
-
-//    LoginPage objOfLoginPage = null;
-//
-//
-//    @BeforeMethod
-//    public void initializationOfElements() {
-//
-//        objOfLoginPage = PageFactory.initElements(driver, LoginPage.class);
-//    }
-
-
 
 }
