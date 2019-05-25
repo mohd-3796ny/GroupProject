@@ -8,11 +8,12 @@ import static base.CommonAPI.convertToString;
 
 public class HomePageTest extends SearchFeature {
 
-        @Test
-        public void test1(){
-            TestLogger.log("Browser is launched");
-            TestLogger.log(getClass().getSimpleName() + ": " + convertToString(new Object(){}.getClass().getEnclosingMethod().getName()));
-            searchMenu();
-            System.out.println("Test Pass");
-        }
+    @Test
+    public void test1() {
+        TestLogger.log("Browser is launched");
+        TestLogger.log(getClass().getSimpleName() + ": " + convertToString(new Object() {
+        }.getClass().getEnclosingMethod().getName()));
+        searchMenu();
+        System.out.println("Test Pass");
     }
+}

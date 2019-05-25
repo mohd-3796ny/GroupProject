@@ -12,14 +12,16 @@ import java.io.IOException;
 
 public class TagNamePageTest extends TagNamePage {
     TagNamePage searchObject;
+
     @BeforeMethod
-    public void init(){
-        searchObject = PageFactory.initElements(driver,TagNamePage.class);
+    public void init() {
+        searchObject = PageFactory.initElements(driver, TagNamePage.class);
     }
 
     @Test
-    public void searchTagName()throws IOException {
-        TestLogger.log(getClass().getSimpleName() + ": " + convertToString(new Object(){}.getClass().getEnclosingMethod().getName()));
+    public void searchTagName() throws IOException {
+        TestLogger.log(getClass().getSimpleName() + ": " + convertToString(new Object() {
+        }.getClass().getEnclosingMethod().getName()));
         registryATest();
     }
 }

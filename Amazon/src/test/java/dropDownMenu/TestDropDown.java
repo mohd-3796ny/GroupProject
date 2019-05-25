@@ -3,10 +3,10 @@ package dropDownMenu;
 import dropdownmenu.FetchDropDown;
 import org.testng.annotations.Test;
 
-public class TestDropDown extends FetchDropDown{
+public class TestDropDown extends FetchDropDown {
 
     @Test
-    public void dropDownData(){
+    public void dropDownData() {
         dropDown();
     }
 }

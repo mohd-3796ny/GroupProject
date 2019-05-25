@@ -13,7 +13,7 @@ public class SignInTest extends CommonAPI {
     String path = "/Users/mdhasan/Desktop/GroupProject/Amazon/src/main/resources/testdata.xls";
 
     @Test
-    public void signIn()throws IOException,InterruptedException{
+    public void signIn() throws IOException, InterruptedException {
         boolean result = false;
         try {
             String[][] value = dr.fileReader(path);
@@ -30,12 +30,12 @@ public class SignInTest extends CommonAPI {
             typeByCss(emailLocator, email);
             typeByCss(passLocator, pass);
             sleepFor(4);
-        }catch(Exception ex){
+        } catch (Exception ex) {
             result = true;
         }
-        if(result==true) {
+        if (result == true) {
             dr.writeBack("SignIn Test : Pass");
-        }else{
+        } else {
             dr.writeBack("SignIn Test : Fail");
         }
 
