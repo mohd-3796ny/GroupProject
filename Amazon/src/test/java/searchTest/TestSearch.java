@@ -3,8 +3,8 @@ package searchTest;
 import base.CommonAPI;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
-import searchPages.SearchPage;
 import reporting.TestLogger;
+import searchPages.SearchPage;
 
 import java.io.IOException;
 import java.sql.SQLException;

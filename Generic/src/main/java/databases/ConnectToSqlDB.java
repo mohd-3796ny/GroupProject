@@ -36,6 +36,42 @@ public class ConnectToSqlDB {
         return connect;
     }
 
+    public static List <User> readUserProfileFromSqlTable() throws IOException, SQLException, ClassNotFoundException {
+        List <User> list = new ArrayList <>();
+        User user = null;
+        try {
+            Connection conn = connectToSqlDatabase();
+            String query = "SELECT * FROM Students";
+            // create the java statement
+            Statement st = conn.createStatement();
+            // execute the query, and get a java resultset
+            ResultSet rs = st.executeQuery(query);
+            // iterate through the java resultset
+            while (rs.next()) {
+                String name = rs.getString("stName");
+                String id = rs.getString("stID");
+                String dob = rs.getString("stDOB");
+                //System.out.format("%s, %s\n", name, id);
+                user = new User(name, id, dob);
+                list.add(user);
+
+            }
+            st.close();
+        } catch (Exception e) {
+            System.err.println("Got an exception! ");
+            System.err.println(e.getMessage());
+        }
+        return list;
+    }
+
+    public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
+
+        List <User> list = readUserProfileFromSqlTable();
+        for (User user : list) {
+            System.out.println(user.getStName() + " " + user.getStID() + " " + user.getStDOB());
+        }
+    }
+
     public List <String> readDataBase(String tableName, String columnName) throws Exception {
         List <String> data = new ArrayList <String>();
 
@@ -83,26 +119,6 @@ public class ConnectToSqlDB {
 
         }
     }
-
-    private List <String> getResultSetData(ResultSet resultSet2, String columnName) throws SQLException {
-        List <String> dataList = new ArrayList <String>();
-        while (resultSet.next()) {
-            String itemName = resultSet.getString(columnName);
-            dataList.add(itemName);
-        }
-        return dataList;
-    }
-
-    private List <String> getResultSetData(ResultSet resultSet2, String columnName1, String columnName2) throws SQLException {
-        List <String> dataList = new ArrayList <String>();
-        while (resultSet.next()) {
-            String itemName1 = resultSet.getString(columnName1);
-            String itemName2 = resultSet.getString(columnName2);
-            dataList.add(itemName1);
-            dataList.add(itemName2);
-        }
-        return dataList;
-    }
 /*public void insertDataFromArrayToSqlTable(int [] ArrayData, String tableName, String columnName)
     {
         try {
@@ -126,6 +142,25 @@ public class ConnectToSqlDB {
         }
     }*/
 
+    private List <String> getResultSetData(ResultSet resultSet2, String columnName) throws SQLException {
+        List <String> dataList = new ArrayList <String>();
+        while (resultSet.next()) {
+            String itemName = resultSet.getString(columnName);
+            dataList.add(itemName);
+        }
+        return dataList;
+    }
+
+    private List <String> getResultSetData(ResultSet resultSet2, String columnName1, String columnName2) throws SQLException {
+        List <String> dataList = new ArrayList <String>();
+        while (resultSet.next()) {
+            String itemName1 = resultSet.getString(columnName1);
+            String itemName2 = resultSet.getString(columnName2);
+            dataList.add(itemName1);
+            dataList.add(itemName2);
+        }
+        return dataList;
+    }
 
     public void insertDataFromArrayToSqlTable(int[] ArrayData, String tableName, String columnName) {
         try {
@@ -150,7 +185,6 @@ public class ConnectToSqlDB {
         }
     }
 
-
     public void insertDataFromStringToSqlTable(String ArrayData, String tableName, String columnName) {
         try {
             connectToSqlDatabase();
@@ -165,7 +199,6 @@ public class ConnectToSqlDB {
             e.printStackTrace();
         }
     }
-
 
     public List <String> directDatabaseQueryExecute(String passQuery, String dataColumn) throws Exception {
         List <String> data = new ArrayList <String>();
@@ -204,7 +237,6 @@ public class ConnectToSqlDB {
             e.printStackTrace();
         }
     }
-
 
     public void insertDataFromArrayListToSqlTable(List <Object> list, String tableName, String columnName) {
         try {
@@ -303,7 +335,6 @@ public class ConnectToSqlDB {
 
     }
 
-
     public void insertProfileToSqlTable(String tableName, String columnName1, String columnName2) {
         try {
             connectToSqlDatabase();
@@ -319,42 +350,6 @@ public class ConnectToSqlDB {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        }
-    }
-
-    public static List <User> readUserProfileFromSqlTable() throws IOException, SQLException, ClassNotFoundException {
-        List <User> list = new ArrayList <>();
-        User user = null;
-        try {
-            Connection conn = connectToSqlDatabase();
-            String query = "SELECT * FROM Students";
-            // create the java statement
-            Statement st = conn.createStatement();
-            // execute the query, and get a java resultset
-            ResultSet rs = st.executeQuery(query);
-            // iterate through the java resultset
-            while (rs.next()) {
-                String name = rs.getString("stName");
-                String id = rs.getString("stID");
-                String dob = rs.getString("stDOB");
-                //System.out.format("%s, %s\n", name, id);
-                user = new User(name, id, dob);
-                list.add(user);
-
-            }
-            st.close();
-        } catch (Exception e) {
-            System.err.println("Got an exception! ");
-            System.err.println(e.getMessage());
-        }
-        return list;
-    }
-
-    public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
-
-        List <User> list = readUserProfileFromSqlTable();
-        for (User user : list) {
-            System.out.println(user.getStName() + " " + user.getStID() + " " + user.getStDOB());
         }
     }
 }

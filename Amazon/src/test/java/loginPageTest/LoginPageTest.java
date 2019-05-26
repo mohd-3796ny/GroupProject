@@ -19,7 +19,7 @@ public class LoginPageTest extends CommonAPI {
 
 
     @Test
-    public void LoginByValidLoginIdPassword(){
+    public void LoginByValidLoginIdPassword() {
 
         driver.findElement(By.xpath("//*[@id=\"nav-link-accountList\"]/span[1]")).click();
         driver.findElement(By.id("ap_email")).sendKeys("shokat_hasan@yahoo.com");

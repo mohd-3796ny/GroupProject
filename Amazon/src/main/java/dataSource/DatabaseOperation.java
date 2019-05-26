@@ -19,6 +19,16 @@ public class DatabaseOperation {
         //connectToSqlDB.insertStringDataFromArrayListToSqlTable(list,"ItemList","items");
     }
 
+    public static void main(String[] args) throws Exception, IOException, SQLException, ClassNotFoundException {
+        //insertDataIntoDB();
+        ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
+        List <String> list = connectToSqlDB.readDataBase("ItemList", "items");
+        for (String st : list) {
+            System.out.println(st);
+        }
+
+    }
+
     public List <String> getItemValue() {
         TestLogger.log(getClass().getSimpleName() + ": " + CommonAPI.convertToString(new Object() {
         }.getClass().getEnclosingMethod().getName()));
@@ -39,15 +49,5 @@ public class DatabaseOperation {
         List <String> list = new ArrayList <>();
         list = connectToSqlDB.readDataBase("ItemList", "items");
         return list;
-    }
-
-    public static void main(String[] args) throws Exception, IOException, SQLException, ClassNotFoundException {
-        //insertDataIntoDB();
-        ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
-        List <String> list = connectToSqlDB.readDataBase("ItemList", "items");
-        for (String st : list) {
-            System.out.println(st);
-        }
-
     }
 }

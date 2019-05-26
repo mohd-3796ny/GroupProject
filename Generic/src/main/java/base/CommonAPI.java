@@ -1,8 +1,9 @@
-
 package base;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -17,10 +18,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
-import org.apache.commons.lang3.StringUtils;
 import reporting.ExtentManager;
 import reporting.ExtentTestManager;
-import org.apache.commons.io.FileUtils;
 import reporting.TestLogger;
 
 import java.io.File;
@@ -38,14 +37,53 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class CommonAPI {
+    //ExtentReport
+    public static ExtentReports extent;
     public WebDriver driver = null;
     public String browserstack_username = "mdhasan5";
     public String browserstack_accesskey = "kwyGrpZpE5CxcXAyhGmJ";
     public String saucelabs_username = "saucelabs_hasan";
     public String saucelabs_accesskey = "bfcf3fbe-cbeb-4617-94da-dd9ca7828166";
 
-    //ExtentReport
-    public static ExtentReports extent;
+    public static void captureScreenshot(WebDriver driver, String screenshotName) {
+        DateFormat df = new SimpleDateFormat("(MM.dd.yyyy-HH:mma)");
+        Date date = new Date();
+        df.format(date);
+
+        File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(file, new File(System.getProperty("user.dir") + "/screenshots/" + screenshotName + " " + df.format(date) + ".png"));
+            System.out.println("Screenshot captured");
+        } catch (Exception e) {
+            System.out.println("Exception while taking screenshot " + e.getMessage());
+            ;
+        }
+
+    }
+
+    public static String convertToString(String st) {
+        String splitString;
+        splitString = StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(st), ' ');
+        return splitString;
+    }
+
+    public static void sleepFor(int sec) throws InterruptedException {
+        Thread.sleep(sec * 1000);
+    }
+
+    //Handling New Tabs
+    public static WebDriver handleNewTab(WebDriver driver1) {
+        String oldTab = driver1.getWindowHandle();
+        List <String> newTabs = new ArrayList <String>(driver1.getWindowHandles());
+        newTabs.remove(oldTab);
+        driver1.switchTo().window(newTabs.get(0));
+        return driver1;
+    }
+
+    public static boolean isPopUpWindowDisplayed(WebDriver driver1, String locator) {
+        boolean value = driver1.findElement(By.cssSelector(locator)).isDisplayed();
+        return value;
+    }
 
     @BeforeSuite
     public void extentSetup(ITestContext context) {
@@ -158,7 +196,6 @@ public class CommonAPI {
 
     }
 
-
     public WebDriver getCloudDriver(String envName, String envUsername, String envAccessKey, String os, String os_version, String browserName,
                                     String browserVersion) throws IOException {
         DesiredCapabilities cap = new DesiredCapabilities();
@@ -238,28 +275,6 @@ public class CommonAPI {
 
     public void navigateBack() {
         driver.navigate().back();
-    }
-
-    public static void captureScreenshot(WebDriver driver, String screenshotName) {
-        DateFormat df = new SimpleDateFormat("(MM.dd.yyyy-HH:mma)");
-        Date date = new Date();
-        df.format(date);
-
-        File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        try {
-            FileUtils.copyFile(file, new File(System.getProperty("user.dir") + "/screenshots/" + screenshotName + " " + df.format(date) + ".png"));
-            System.out.println("Screenshot captured");
-        } catch (Exception e) {
-            System.out.println("Exception while taking screenshot " + e.getMessage());
-            ;
-        }
-
-    }
-
-    public static String convertToString(String st) {
-        String splitString;
-        splitString = StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(st), ' ');
-        return splitString;
     }
 
     public void clickOnCss(String locator) {
@@ -382,10 +397,6 @@ public class CommonAPI {
         select.selectByVisibleText(value);
     }
 
-    public static void sleepFor(int sec) throws InterruptedException {
-        Thread.sleep(sec * 1000);
-    }
-
     public void mouseHoverByCSS(String locator) {
         try {
             WebElement element = driver.findElement(By.cssSelector(locator));
@@ -476,20 +487,6 @@ public class CommonAPI {
 
     public void keysInput(String locator) {
         driver.findElement(By.cssSelector(locator)).sendKeys(Keys.ENTER);
-    }
-
-    //Handling New Tabs
-    public static WebDriver handleNewTab(WebDriver driver1) {
-        String oldTab = driver1.getWindowHandle();
-        List <String> newTabs = new ArrayList <String>(driver1.getWindowHandles());
-        newTabs.remove(oldTab);
-        driver1.switchTo().window(newTabs.get(0));
-        return driver1;
-    }
-
-    public static boolean isPopUpWindowDisplayed(WebDriver driver1, String locator) {
-        boolean value = driver1.findElement(By.cssSelector(locator)).isDisplayed();
-        return value;
     }
 
     public void typeOnInputBox(String locator, String value) {

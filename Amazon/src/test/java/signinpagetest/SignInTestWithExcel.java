@@ -3,12 +3,11 @@ package signinpagetest;
 
 import base.CommonAPI;
 import org.testng.annotations.Test;
+import utility.DataReaderForSignup;
 
 import java.io.IOException;
 
-import utility.DataReaderForSignup;
-
-public class SignInTest extends CommonAPI {
+public class SignInTestWithExcel extends CommonAPI {
     public DataReaderForSignup dr = new DataReaderForSignup();
     String path = "/Users/mdhasan/Desktop/GroupProject/Amazon/src/main/resources/testdata.xls";
 

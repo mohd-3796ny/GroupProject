@@ -8,28 +8,24 @@ import org.openqa.selenium.support.FindBy;
 public class LoginPageNew {
 
     WebDriver driver;
-    public LoginPageNew(WebDriver lDriver)
-    {
-        this.driver=lDriver;
-    }
-
-    @FindBy(id="ap_email")
+    @FindBy(id = "ap_email")
     @CacheLookup
     WebElement username;
-
-    @FindBy(id="ap_password")
+    @FindBy(id = "ap_password")
     @CacheLookup
     WebElement password;
-
-    @FindBy(id="signInSubmit")
+    @FindBy(id = "signInSubmit")
     @CacheLookup
     WebElement loginButton;
-
-    @FindBy(id="nav-link-accountList")
+    @FindBy(id = "nav-link-accountList")
     @CacheLookup
     WebElement helloSignin;
 
-    public void loginWithMultipleInput(String uid, String pass){
+    public LoginPageNew(WebDriver lDriver) {
+        this.driver = lDriver;
+    }
+
+    public void loginWithMultipleInput(String uid, String pass) {
 
         helloSignin.click();
         username.sendKeys(uid);

@@ -1,26 +1,23 @@
 package loginPage;
 
-import base.CommonAPI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.Test;
 
 public class LoginPage {
 
     WebDriver driver;
 
-    By username =By.id("ap_email");
-    By pasword=By.id("ap_password");
-    By loginButton =By.id("signInSubmit");
-    By helloSignin=By.id("nav-link-accountList");
+    By username = By.id("ap_email");
+    By pasword = By.id("ap_password");
+    By loginButton = By.id("signInSubmit");
+    By helloSignin = By.id("nav-link-accountList");
 
-    public LoginPage(WebDriver driver)
-    {
-        this.driver=driver;
+    public LoginPage(WebDriver driver) {
+        this.driver = driver;
     }
 
     //if want to use multiple method in one
-    public void loginWithMultipleInput(String userid,String pass){
+    public void loginWithMultipleInput(String userid, String pass) {
 
         driver.findElement(username).sendKeys("userid");
         driver.findElement(pasword).sendKeys("pass");
@@ -48,13 +45,11 @@ public class LoginPage {
 
     //  }
 
-    public void clickOnLoginButton()
-    {
+    public void clickOnLoginButton() {
         driver.findElement(loginButton).click();
     }
 
-    public void clickOnHelloSignin()
-    {
+    public void clickOnHelloSignin() {
         driver.findElement(helloSignin).click();
     }
 
