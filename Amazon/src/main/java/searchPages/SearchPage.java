@@ -2,10 +2,7 @@ package searchPages;
 
 
 import base.CommonAPI;
-;
 import dataSource.DatabaseOperation;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -14,6 +11,8 @@ import reporting.TestLogger;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+
+;
 
 public class SearchPage {
     @FindBy(how = How.CSS, using = "#twotabsearchtextbox")

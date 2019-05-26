@@ -29,6 +29,24 @@ public class BrowserFactory {
 
     //ExtentReport
     public static ExtentReports extent;
+    static WebDriver driver;
+
+    public static WebDriver startBrowser(String browserName, String url) {
+        if (browserName.equalsIgnoreCase("firefox")) {
+            driver = new FirefoxDriver();
+        } else if (browserName.equalsIgnoreCase("chrome")) {
+            driver = new ChromeDriver();
+        } else if (browserName.equalsIgnoreCase("IE")) {
+            driver = new InternetExplorerDriver();
+        }
+
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
+        driver.get(url);
+        return driver;
+
+
+    }
 
     @BeforeSuite
     public void extentSetup(ITestContext context) {
@@ -84,27 +102,5 @@ public class BrowserFactory {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(millis);
         return calendar.getTime();
-    }
-
-    static WebDriver driver;
-
-    public static WebDriver startBrowser(String browserName, String url)
-    {
-        if(browserName.equalsIgnoreCase("firefox")) {
-            driver = new FirefoxDriver();
-        }
-        else if (browserName.equalsIgnoreCase("chrome")) {
-            driver = new ChromeDriver();
-        }
-        else if (browserName.equalsIgnoreCase("IE")) {
-            driver = new InternetExplorerDriver();
-        }
-
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-        driver.get(url);
-        return driver;
-
-
     }
 }
