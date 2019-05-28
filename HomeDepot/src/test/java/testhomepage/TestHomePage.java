@@ -136,16 +136,52 @@ public class TestHomePage extends CommonAPI {
 
     }
 
+    @Test
+    public void ProductRecalls() throws InterruptedException {
+        homePage.ProductRecalls();
 
+    }
+    @Test
+    public void RealEstateFloorPlanServices() throws InterruptedException {
+        homePage.RealEstateFloorPlanServices();
 
+    }
+    @Test
+    public void ProtectionPlans() throws InterruptedException {
+        homePage.ProtectionPlans();
 
-
-
-
-
-
-
-
-
+    }
+    @Test
+    public void RebateCenter() throws InterruptedException {
+        homePage.RebateCenter();
+    }
+    @Test
+    public void CorporateInformation() throws InterruptedException {
+        homePage.CorporateInformation();
+    }
+    @Test
+    public void DigitalNewsroom() throws InterruptedException {
+        homePage.DigitalNewsroom();
+    }
+    @Test
+    public void HomeDepotFoundation() throws InterruptedException {
+        homePage.HomeDepotFoundation();
+    }
+    @Test
+    public void InvestorRelations() throws InterruptedException {
+        homePage.InvestorRelations();
+    }
+    @Test
+    public void GovernmentCustomers() throws InterruptedException {
+        homePage.GovernmentCustomers();
+    }
+    @Test
+    public void AffiliateProgram() throws InterruptedException {
+        homePage.AffiliateProgram();
+    }
+    @Test
+    public void CorporateResponsibility() throws InterruptedException {
+        homePage.CorporateResponsibility();
+    }
 
 }
