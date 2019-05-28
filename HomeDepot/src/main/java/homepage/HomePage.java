@@ -69,6 +69,31 @@ public class HomePage extends CommonAPI {
     WebElement OrderCancellation;
 
 
+    @FindBy(xpath = "//*[@id=\"container\"]/div[3]/footer/div[2]/nav[1]/ul/li[6]/a")
+    WebElement ProductRecalls;
+    @FindBy(xpath = "//*[@id=\"container\"]/div[3]/footer/div[2]/nav[2]/ul/li[6]/a")
+    WebElement RealEstateFloorPlanServices;
+    @FindBy(xpath = "//*[@id=\"container\"]/div[3]/footer/div[2]/nav[2]/ul/li[7]/a")
+    WebElement ProtectionPlans;
+    @FindBy(xpath = "//*[@id=\"container\"]/div[3]/footer/div[2]/nav[2]/ul/li[8]/a")
+    WebElement RebateCenter;
+    @FindBy(xpath = "//*[@id=\"container\"]/div[3]/footer/div[2]/nav[3]/ul/li[2]/a")
+    WebElement CorporateInformation;
+    @FindBy(xpath = "//*[@id=\"container\"]/div[3]/footer/div[2]/nav[3]/ul/li[3]/a")
+    WebElement DigitalNewsroom;
+    @FindBy(xpath = "//*[@id=\"container\"]/div[3]/footer/div[2]/nav[3]/ul/li[4]/a")
+    WebElement HomeDepotFoundation;
+    @FindBy(xpath = "//*[@id=\"container\"]/div[3]/footer/div[2]/nav[3]/ul/li[5]/a")
+    WebElement InvestorRelations;
+    @FindBy(xpath = "//*[@id=\"container\"]/div[3]/footer/div[2]/nav[3]/ul/li[6]/a")
+    WebElement GovernmentCustomers;
+    @FindBy(xpath = "//*[@id=\"container\"]/div[3]/footer/div[2]/nav[3]/ul/li[8]/a")
+    WebElement AffiliateProgram;
+    @FindBy(xpath = "//*[@id=\"container\"]/div[3]/footer/div[2]/nav[3]/ul/li[10]/a")
+    WebElement CorporateResponsibility;
+
+
+
 
 
 
@@ -203,6 +228,53 @@ public class HomePage extends CommonAPI {
         OrderCancellation.getText();
         Thread.sleep(5);
     }
+
+
+    public void ProductRecalls() throws InterruptedException {
+        ProductRecalls.getText();
+        Thread.sleep(5);
+    }
+    public void RealEstateFloorPlanServices() throws InterruptedException {
+        RealEstateFloorPlanServices.getText();
+        Thread.sleep(5);
+    }
+    public void ProtectionPlans() throws InterruptedException {
+        ProtectionPlans.getText();
+        Thread.sleep(5);
+    }
+    public void RebateCenter() throws InterruptedException {
+        RebateCenter.getText();
+        Thread.sleep(5);
+    }
+    public void CorporateInformation() throws InterruptedException {
+        CorporateInformation.getText();
+        Thread.sleep(5);
+    }
+    public void DigitalNewsroom() throws InterruptedException {
+        DigitalNewsroom.getText();
+        Thread.sleep(5);
+    }
+    public void HomeDepotFoundation() throws InterruptedException {
+        HomeDepotFoundation.getText();
+        Thread.sleep(5);
+    }
+    public void InvestorRelations() throws InterruptedException {
+        InvestorRelations.getText();
+        Thread.sleep(5);
+    }
+    public void GovernmentCustomers() throws InterruptedException {
+        GovernmentCustomers.getText();
+        Thread.sleep(5);
+    }
+    public void AffiliateProgram() throws InterruptedException {
+        AffiliateProgram.getText();
+        Thread.sleep(5);
+    }
+    public void CorporateResponsibility() throws InterruptedException {
+        CorporateResponsibility.getText();
+        Thread.sleep(5);
+    }
+
 
 }
 
